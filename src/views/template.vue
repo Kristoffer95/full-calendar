@@ -84,11 +84,7 @@ export default {
   },
 
   methods: {
-    icon(iconName) {
-      return require(`@/assets/SVG/${iconName}.svg`)
-    },
-    
-    // FullCalendar
+
     handleWeekendsToggle() {
       this.calendarOptions.weekends = !this.calendarOptions.weekends // update a property
     },
@@ -123,44 +119,53 @@ export default {
 }
 </script>
 
-<style lang='scss'>
+<style lang='css'>
 
-  h2 {
-    margin: 0;
-    font-size: 16px;
-  }
-  ul {
-    margin: 0;
-    padding: 0 0 0 1.5em;
-  }
-  li {
-    margin: 1.5em 0;
-    padding: 0;
-  }
-  b { /* used for event dates/times */
-    margin-right: 3px;
-  }
-  .calendar {
-    display: flex;
-    min-height: 100%;
-    font-family: Arial, Helvetica Neue, Helvetica, sans-serif;
-    font-size: 14px;
-  }
-  .calendar-sidebar {
-    width: 300px;
-    line-height: 1.5;
-    background: #eaf9ff;
-    border-right: 1px solid #d3e2e8;
-  }
-  .calendar-sidebar-section {
-    padding: 2em;
-  }
-  .calendar-main {
-    flex-grow: 1;
-    padding: 3em;
-  }
-  .fc { /* the calendar root */
-    max-width: 1100px;
-    margin: 0 auto;
-  }
+h2 {
+  margin: 0;
+  font-size: 16px;
+}
+
+ul {
+  margin: 0;
+  padding: 0 0 0 1.5em;
+}
+
+li {
+  margin: 1.5em 0;
+  padding: 0;
+}
+
+b { /* used for event dates/times */
+  margin-right: 3px;
+}
+
+.calendar {
+  display: flex;
+  min-height: 100%;
+  font-family: Arial, Helvetica Neue, Helvetica, sans-serif;
+  font-size: 14px;
+}
+
+.calendar-sidebar {
+  width: 300px;
+  line-height: 1.5;
+  background: #eaf9ff;
+  border-right: 1px solid #d3e2e8;
+}
+
+.calendar-sidebar-section {
+  padding: 2em;
+}
+
+.calendar-main {
+  flex-grow: 1;
+  padding: 3em;
+}
+
+.fc { /* the calendar root */
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
 </style>
