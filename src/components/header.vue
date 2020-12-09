@@ -19,13 +19,14 @@
 
       <!-- options section -->
       <div class="options">
-        <div class="options-left">
+        <div class="options-left" >
           <span class="msg">Send Mesage</span>
-          <div class="toggle" :style="{ 'background-color' : toggle ? '' : '#C1C1C1 !important' }">
+          <div class="toggle" @click="toggle = !toggle"
+            :style="{ 'background-color' : toggle ? '' : '#C1C1C1 !important' }">
             <img :src="icon('appointment-completed-icon')" alt="">
             <!-- button -->
             <div class="toggle-button" :class="toggle ? 'toggle-right' : 'toggle-left'" 
-              @click="toggle = !toggle"></div>
+              ></div>
           </div>
         </div>
 
@@ -132,6 +133,7 @@
     height: 32px;
     border-radius: 50px;
     padding: 3px;
+    cursor: pointer;
 
     img {
       width: 17px;
@@ -142,14 +144,12 @@
       //   fill: #fff
       // }
     }
-
     .toggle-button {
       position: absolute;
       width: 26px;
       height: 26px;
       background-color: white;
       border-radius: 100%;
-      cursor: pointer;
     }
   }
 

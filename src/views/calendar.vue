@@ -1,35 +1,6 @@
 <template>
   <div class='calendar'>
     <calendar-sidebar />
-    <!-- <div class='calendar-sidebar'>
-      <div class='calendar-sidebar-section'>
-        <h2>Instructions</h2>
-        <ul>
-          <li>Select dates and you will be prompted to create a new event</li>
-          <li>Drag, drop, and resize events</li>
-          <li>Click an event to delete it</li>
-        </ul>
-      </div>
-      <div class='calendar-sidebar-section'>
-        <label>
-          <input
-            type='checkbox'
-            :checked='calendarOptions.weekends'
-            @change='handleWeekendsToggle'
-          />
-          toggle weekends
-        </label>
-      </div>
-      <div class='calendar-sidebar-section'>
-        <h2>All Events ({{ currentEvents.length }})</h2>
-        <ul>
-          <li v-for='event in currentEvents' :key='event.id'>
-            <b>{{ event.startStr }}</b>
-            <i>{{ event.title }}</i>
-          </li>
-        </ul>
-      </div>
-    </div> -->
     
     <div class='calendar-main'>
       <full-calendar
@@ -159,10 +130,10 @@ export default {
 
   .calendar-main {
     flex-grow: 1;
-    padding: 3em;
+    padding: 20px;
   }
   .fc { /* the calendar root */
-    max-width: 1100px;
+    max-width: 1604px;
     margin: 0 auto;
   }
 
