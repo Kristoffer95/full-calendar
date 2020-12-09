@@ -1,5 +1,6 @@
 <template>
   <div id="app" style="font-family: sans-serif">
+    <!-- <i class="icon-add-arrow"></i> -->
     <app-header />
     <router-view />
   </div>
@@ -37,5 +38,8 @@ export default {
   background-color: #F7F7F7;
 }
 
+.cursor-pointer {
+  cursor: pointer;
+}
 </style>
 

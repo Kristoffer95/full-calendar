@@ -3,7 +3,17 @@
     <calendar-sidebar />
     
     <div class='calendar-main'>
-      <full-calendar
+      <!-- <div class="calendar-main-top">
+        <div>
+          <span><i class="icon-sidebar-arrow-close cursor-pointer" style="font-size: 20px;" /></span>
+        </div>
+
+        <div>
+          <img class="cursor-pointer"
+            :src="icon('settings-icon')" alt="">
+        </div>
+      </div> -->
+      <full-calendar id="calendar-main"
         class='calendar-calendar'
         :options='calendarOptions'
       >
@@ -100,11 +110,70 @@ export default {
     handleEvents(events) {
       this.currentEvents = events
     }
+  },
+  mounted() {
+    
+
+    // getting the id="calendar-main"
+    let calenarHeader = document.getElementById("calendar-main").children[0]
+
+    // hide sidebar button
+    const div = document.createElement('div');
+    div.classList.add('sidebar-visible')
+    const hideSidebar = document.createElement('img')
+    hideSidebar.classList.add('cursor-pointer')
+    hideSidebar.setAttribute('src', `${this.icon('sidebar-arrow-close')}`)
+    calenarHeader.children[0].appendChild(div).appendChild(hideSidebar)
+    
+    // Add Appointment
+    const addAppointmentBtn = document.createElement('div')
+    addAppointmentBtn.classList.add('calendar-add-appointment')
+    addAppointmentBtn.classList.add('cursor-pointer')
+    const addIcon = document.createElement('i')
+    addIcon.classList.add('icon-add-arrow')
+    const span = document.createElement('span')
+    const spanTest = document.createTextNode('Add Appointment')
+    calenarHeader.children[0].appendChild(addAppointmentBtn).appendChild(addIcon)
+    calenarHeader.children[0].children[1].appendChild(span).appendChild(spanTest)
+
+    // settings
+    const settings = document.createElement('img')
+    settings.classList.add('cursor-pointer')
+    settings.setAttribute('src', `${this.icon('settings-icon')}`)
+    calenarHeader.children[2].appendChild(settings)
+    
+    // console.log(document.getElementById("calendar-main").children[0].children[2].appendChild(div).appendChild(i))
   }
 }
 </script>
 
 <style lang='scss'>
+
+  .calendar-main {
+    // border: 1px solid red;
+    position: relative;
+    > .calendar-main-top {
+      // border: 1px solid red;
+      position: absolute;
+      width: 100%;
+      max-width: 1604px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      left: 50%;
+      transform: translate(-50%, 0);
+      padding: 0 20px;
+    }
+
+    > .calendar-calendar {
+      .fc-button-group {
+        margin-right: 64px;
+      }
+      button.fc-today-button.fc-button.fc-button-primary {
+        margin-left: 64px;
+      }
+    }
+  }
 
   h2 {
     margin: 0;

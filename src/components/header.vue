@@ -20,7 +20,7 @@
       <!-- options section -->
       <div class="options">
         <div class="options-left" >
-          <span class="msg">Send Mesage</span>
+          <span class="msg">Send Mesages</span>
           <div class="toggle" @click="toggle = !toggle"
             :style="{ 'background-color' : toggle ? '' : '#C1C1C1 !important' }">
             <img :src="icon('appointment-completed-icon')" alt="">

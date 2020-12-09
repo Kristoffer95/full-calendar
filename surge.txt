@@ -1,0 +1,2 @@
+npm run build
+surge ./dist/ --domain kristoffer-fullcalendar.surge.sh

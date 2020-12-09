@@ -6,10 +6,48 @@
     
     <!-- <hr style="border-color: #E4E4E4;"/> -->
     <div class="find-customer">
-      <div>
-        <span>Find Customer</span>
+      <div class="find-customer-top">
+        <span class="find-customer-title">Find Customer</span>
+        <div class="find-customer-topRight">
+          <i class="icon-add-arrow cursor-pointer" style="margin-right: 24px;"></i>
+          <i class="icon-collapse-arrow cursor-pointer"></i>
+        </div>
       </div>
-      <img :src="icon('add-arrow')" alt="">
+
+      <div class="find-customer-bottom">
+        <i class="icon-search-icon" />
+        <input type="text" placeholder="Customer name...">
+      </div>
+      <!-- <img :src="icon('add-arrow')" alt=""> -->
+    </div>
+
+    <div class="calendars-list">
+      <div class="calendars-top">
+        <span class="calendars-title">Calendars</span>
+        <div class="calendars-topRight">
+          <i class="icon-add-arrow cursor-pointer" style="margin-right: 24px;"></i>
+          <i class="icon-collapse-arrow cursor-pointer"></i>
+        </div>
+      </div>
+
+      <div class="list-wrapper">
+        <div class="list list-top">
+          <input class="list-checkbox" type="checkbox">
+          <span style="color: red;">Select All(N selected)</span>
+        </div>
+
+        <div class="list" v-for="(list, listIndex) in calendarsList" :key="listIndex">
+          <input type="checkbox">
+          <div class="list-image"></div>
+          <span class="list-name">{{ list.name }}</span>
+        </div>
+
+        <div class="list-edit cursor-pointer">
+          <i class="icon-edit-calendars-icon" />
+          <span class="">Edit calendars</span>
+        </div>
+
+      </div>
     </div>
     <!-- <div class='calendar-sidebar-section'>
       <h2>Instructions</h2>
@@ -53,6 +91,12 @@
     name: 'calendarSidebar',
     data() {
       return {
+        calendarsList: [
+          { name: 'Matthew Skilton', selected: false },
+          { name: 'Very long name and last name', selected: false },
+          { name: 'Tedy Bargle', selected: false },
+          { name: 'John Doe', selected: false },
+        ],
         calendarOptions: {
           plugins: [ dayGridPlugin, timeGridPlugin, interactionPlugin /* needed for dateClick */ ],
           headerToolbar: {
@@ -133,9 +177,104 @@
       }
     }
     > .find-customer {
-      border-top: 1px solid #E4E4E4;
-      border-bottom: 1px solid #E4E4E4;
-      width: 100%;
+        border-top: 1px solid #E4E4E4;
+        border-bottom: 1px solid #E4E4E4;
+        margin: 0 10px;
+        padding: 30px 0;
+        
+      .find-customer-top {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        span.find-customer-title {
+          font-size: 14px;
+          font-weight: 600;
+        }
+        .find-customer-topRight {
+          display: flex
+        }
+      }
+
+      .find-customer-bottom {
+        border: 1px solid #D5D7D6;
+        padding: 10px;
+        display: flex;
+        border-radius: 50px;
+        margin-top: 18px;
+
+        i {
+          font-size: 18px;
+        }
+        input {
+          border: 0;
+          width: 150px;
+          background: transparent;
+          outline: none;
+          margin-left: 11px;
+          font-size: 14px;
+        }
+      }
+    }
+    .calendars-list {
+      padding: 0 10px;
+
+      .calendars-top {
+        margin-top: 30px;
+        display: flex;
+        justify-content: space-between;
+        .calendars-title {
+          font-size: 14px;
+          font-weight: 600;
+        }
+        .calendars-topRight {
+          display: flex;
+          align-items: center;
+        }
+      }
+      .list-wrapper {
+
+        .list {
+          margin-top: 21px;
+          display: flex;
+          align-items: flex-start;
+
+          input {
+            min-width: 18px;
+            height: 18px;
+            margin-top: 2px;
+            margin-right: 5px;
+            // align-self: center;
+          }
+          .list-image {
+            min-width: 28px;
+            height: 28px;
+            background-color: #30A26B;
+            border-radius: 50px;
+            margin-right: 5px;
+            // align-self: center;
+          }
+          .list-name {
+            color: #3F4140;
+          }
+        }
+        .list-edit {
+          display: flex;
+          align-items: center;
+          // border: 1px solid red;
+          margin-top: 22px;
+
+          i {
+            font-size: 18px;
+            margin-right: 8px;
+          }
+          span {
+            font-size: 14px;
+            color: #30A26B;
+            font-weight: 500;
+          }
+        }
+      }
+      
     }
   }
 </style>
@@ -154,5 +293,4 @@
   // .sidebar-calendar {
   //   height: 440px;
   // }
-  
 </style>
