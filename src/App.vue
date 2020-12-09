@@ -6,6 +6,9 @@
 </template>
 
 <script>
+// icons
+import '@/assets/font-icons/style.css';
+//Components
 import header from '@/components/header.vue'
 
 export default {
