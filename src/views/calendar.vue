@@ -1,6 +1,7 @@
 <template>
   <div class='calendar'>
-    <div class='calendar-sidebar'>
+    <calendar-sidebar />
+    <!-- <div class='calendar-sidebar'>
       <div class='calendar-sidebar-section'>
         <h2>Instructions</h2>
         <ul>
@@ -28,10 +29,10 @@
           </li>
         </ul>
       </div>
-    </div>
+    </div> -->
     
     <div class='calendar-main'>
-      <FullCalendar
+      <full-calendar
         class='calendar-calendar'
         :options='calendarOptions'
       >
@@ -39,30 +40,39 @@
           <b>{{ arg.timeText }}</b>
           <i>{{ arg.event.title }}</i>
         </template>
-      </FullCalendar>
+      </full-calendar>
     </div>
   </div>
 </template>
 
 <script>
-import FullCalendar from '@fullcalendar/vue'
+import fullCalendar from '@fullcalendar/vue'
 import dayGridPlugin from '@fullcalendar/daygrid'
 import timeGridPlugin from '@fullcalendar/timegrid'
 import interactionPlugin from '@fullcalendar/interaction'
 import { INITIAL_EVENTS, createEventId } from '@/event-utils'
 
+import calendarSidebar from '@/components/calendarSidebar'
+
 export default {
   name: 'Home',
-  components: { FullCalendar },
+  components: { fullCalendar, calendarSidebar },
   data: function() {
     return {
       calendarOptions: {
         plugins: [ dayGridPlugin, timeGridPlugin, interactionPlugin /* needed for dateClick */ ],
         headerToolbar: {
-          left: 'prev,next today',
-          center: 'title',
-          right: 'dayGridMonth,timeGridWeek,timeGridDay'
+          // left: 'prev,next today',
+          left: '',
+          center: 'today prev title next',
+          right: 'timeGridDay,timeGridWeek,dayGridMonth'
         },
+        // views: {
+        //   dayGridMonth: { // name of view
+        //     titleFormat: { year: 'numeric', month: '2-digit', day: '2-digit' }
+        //     // other view-specific options here
+        //   }
+        // },
         initialView: 'dayGridMonth',
         initialEvents: INITIAL_EVENTS, // alternatively, use the `events` setting to fetch from a feed
         editable: true,
@@ -72,7 +82,7 @@ export default {
         weekends: true,
         select: this.handleDateSelect,
         eventClick: this.handleEventClick,
-        eventsSet: this.handleEvents
+        eventsSet: this.handleEvents,
         /* you can update a remote database when these fire:
         eventAdd:
         eventChange:
@@ -146,15 +156,7 @@ export default {
     font-family: Arial, Helvetica Neue, Helvetica, sans-serif;
     font-size: 14px;
   }
-  .calendar-sidebar {
-    width: 300px;
-    line-height: 1.5;
-    background: #eaf9ff;
-    border-right: 1px solid #d3e2e8;
-  }
-  .calendar-sidebar-section {
-    padding: 2em;
-  }
+
   .calendar-main {
     flex-grow: 1;
     padding: 3em;
@@ -162,5 +164,10 @@ export default {
   .fc { /* the calendar root */
     max-width: 1100px;
     margin: 0 auto;
+  }
+
+  .fc-toolbar-chunk {
+    display: flex;
+    align-items: center;
   }
 </style>
